@@ -1,5 +1,7 @@
 .header {
-  // max-width: 1680px;
+  position: relative;
+
+  max-width: 1680px;
   margin: 0 auto;
   padding-top: 30px;
 
@@ -37,8 +39,8 @@
 
     &.menu-logo {
       position: absolute;
-      top: -78px;
-      left: 0px;
+      top: -80px;
+      left: 20px;
       z-index: 20;
 
       & .header-logo-name,
@@ -173,8 +175,6 @@
 
   &-menu-wrapper {
     position: relative;
-    max-width: 280px;
-    padding: 0px;
   }
 
   &-button {
@@ -182,10 +182,10 @@
     height: 48px;
     margin: 0 10px;
 
-
-    color: $accent-background;
+    color: $accent-text-color;
     background-color: transparent;
     border: 2px solid $accent-background;
+    cursor: pointer;
 
     font-style: normal;
     font-weight: bold;
@@ -199,7 +199,7 @@
     &:hover,
     &:focus {
       color: $white-text-color;
-      background-color: $accent-text-color;
+      background-color: $accent-background;
       transition: $animation;
     }
 
@@ -272,12 +272,18 @@
       &-wrapper {
         position: relative;
         max-width: 688px;
-        padding: 0;
       }
     }
 
     &-button {
       display: none;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+        fill: $accent-background;
+        transition: $animation;
+      }
     }
 
     &-button.is-hidden {
@@ -317,7 +323,6 @@
         display: flex;
         max-width: 1044px;
         padding: 0;
-
       }
     }
 

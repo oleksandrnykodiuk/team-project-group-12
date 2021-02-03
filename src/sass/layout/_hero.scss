@@ -20,10 +20,9 @@
     }
   }
 
-
-
   &-container {
     position: relative;
+
     background: transparent;
     background-color: transparent;
   }
@@ -76,6 +75,7 @@
     color: $white-text-color;
     background-color: $accent-background;
     border: 2px solid $accent-background;
+    cursor: pointer;
 
     font-style: normal;
     font-weight: bold;
@@ -89,7 +89,7 @@
     &:hover,
     &:focus {
       color: $accent-text-color;
-      background-color: inherit;
+      background-color: $white-background;
       transition: $animation;
     }
   }
@@ -163,7 +163,7 @@
     &-picture {
       display: none;
       position: absolute;
-      top: 177px;
+      top: 84px;
       left: 332px;
       margin: 0;
     }
@@ -190,7 +190,6 @@
 
 @media screen and (min-width: 1344px) {
   .hero {
-
     &-section {
       padding-top: 125px;
       padding-bottom: 130px;
@@ -283,4 +282,3 @@
     }
   }
 }
-
