@@ -117,83 +117,21 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
+})({"js/modal.js":[function(require,module,exports) {
+(function () {
+  var refs = {
+    openModalBtn: document.querySelector('[data-modal-open]'),
+    closeModalBtn: document.querySelector('[data-modal-close]'),
+    modal: document.querySelector('[data-modal]')
   };
+  refs.openModalBtn.addEventListener('click', toggleModal);
+  refs.closeModalBtn.addEventListener('click', toggleModal);
 
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
+  function toggleModal() {
+    refs.modal.classList.toggle('is-hidden');
   }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"sass/main.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./../images/hero/png/wave-mobile.png":[["wave-mobile.3344deaa.png","images/hero/png/wave-mobile.png"],"images/hero/png/wave-mobile.png"],"./../images/hero/png/wave-tablet.png":[["wave-tablet.8586a4cb.png","images/hero/png/wave-tablet.png"],"images/hero/png/wave-tablet.png"],"./../images/hero/png/wave-desktop.png":[["wave-desktop.658989a2.png","images/hero/png/wave-desktop.png"],"images/hero/png/wave-desktop.png"],"./../images/svg/fire-big.svg":[["fire-big.88c09a09.svg","images/svg/fire-big.svg"],"images/svg/fire-big.svg"],"./../images/our-program/png/program-mobile.png":[["program-mobile.d5ff7f54.png","images/our-program/png/program-mobile.png"],"images/our-program/png/program-mobile.png"],"./../images/our-program/png/program-mobile@2x.png":[["program-mobile@2x.363cd6de.png","images/our-program/png/program-mobile@2x.png"],"images/our-program/png/program-mobile@2x.png"],"./../images/our-program/png/program-tablet.png":[["program-tablet.88a5f6ea.png","images/our-program/png/program-tablet.png"],"images/our-program/png/program-tablet.png"],"./../images/our-program/png/program-tablet@2x.png":[["program-tablet@2x.9461b0c3.png","images/our-program/png/program-tablet@2x.png"],"images/our-program/png/program-tablet@2x.png"],"./../images/our-program/png/program-desktop@2x.png":[["program-desktop@2x.d18d463a.png","images/our-program/png/program-desktop@2x.png"],"images/our-program/png/program-desktop@2x.png"],"./../images/svg/fire_mt.svg":[["fire_mt.b0670e8b.svg","images/svg/fire_mt.svg"],"images/svg/fire_mt.svg"],"./../images/svg/vector_m.svg":[["vector_m.8eb3961b.svg","images/svg/vector_m.svg"],"images/svg/vector_m.svg"],"./../images/svg/vector_t.svg":[["vector_t.40f29d14.svg","images/svg/vector_t.svg"],"images/svg/vector_t.svg"],"./../images/svg/fire.svg":[["fire.4fc00094.svg","images/svg/fire.svg"],"images/svg/fire.svg"],"./../images/svg/vector_l.svg":[["vector_l.c7acd214.svg","images/svg/vector_l.svg"],"images/svg/vector_l.svg"],"./../images/svg/arrow1.svg":[["arrow1.05b6e123.svg","images/svg/arrow1.svg"],"images/svg/arrow1.svg"],"./../images/svg/arrow2.svg":[["arrow2.6b6b686d.svg","images/svg/arrow2.svg"],"images/svg/arrow2.svg"],"./../images/registration/png/registration-mobile-min.png":[["registration-mobile-min.b686afbd.png","images/registration/png/registration-mobile-min.png"],"images/registration/png/registration-mobile-min.png"],"./../images/registration/png/registration-mobile@2x.png":[["registration-mobile@2x.6fe657f4.png","images/registration/png/registration-mobile@2x.png"],"images/registration/png/registration-mobile@2x.png"],"./../images/registration/png/registration-tablet.png":[["registration-tablet.0ccd3d2b.png","images/registration/png/registration-tablet.png"],"images/registration/png/registration-tablet.png"],"./../images/registration/png/registration-tablet@2x.png":[["registration-tablet@2x.fef46f56.png","images/registration/png/registration-tablet@2x.png"],"images/registration/png/registration-tablet@2x.png"],"./../images/registration/png/registration-desktop.png":[["registration-desktop.27991e3e.png","images/registration/png/registration-desktop.png"],"images/registration/png/registration-desktop.png"],"./../images/registration/png/registration-desktop@2x.png":[["registration-desktop@2x.0e48e4eb.png","images/registration/png/registration-desktop@2x.png"],"images/registration/png/registration-desktop@2x.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-require("./sass/main.scss");
-},{"./sass/main.scss":"sass/main.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+})();
+},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -397,5 +335,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/modal.js"], null)
+//# sourceMappingURL=/modal.4331011c.js.map
