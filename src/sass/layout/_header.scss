@@ -165,25 +165,11 @@
     }
   }
 
-  // &-menu-container {
-  //   display: none;
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-
-  //   width: 100vw;
-  //   height: 100vh;
-  //   padding: 108px 20px 0px 20px;
-
-  //   overflow-y: scroll;
-  //   z-index: 1;
-
-  //   background-color: rgba(17, 21, 24, 0.9);
-
-  //   &.is-open {
-  //     display: block;
-  //   }
-  // }
+  @media screen and (max-width: 767px) {
+    &-menu-container {
+      padding: 108px 0px 0px 0px;
+    }
+  }
 
   &-menu-wrapper {
     position: relative;
@@ -192,10 +178,10 @@
   }
 
   &-button {
-    max-width: 260px;
+    width: 260px;
     height: 48px;
-    padding: 0 14px;
-    margin: 0 0px;
+    margin: 0 10px;
+
 
     color: $accent-background;
     background-color: transparent;
@@ -330,6 +316,8 @@
       &-wrapper {
         display: flex;
         max-width: 1044px;
+        padding: 0;
+
       }
     }
 
@@ -339,6 +327,12 @@
 
     &-button {
       display: block;
+      margin: 0;
+      width: 336px;
+      height: 70px;
+      font-size: 14px;
+      line-height: 1.214;
+      letter-spacing: 0.14em;
     }
 
     &-button.is-hidden {
